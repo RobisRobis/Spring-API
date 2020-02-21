@@ -43,6 +43,12 @@ public class DentistaResource {
 		return "Olá Mundo";
 	}
 	
+	@GetMapping("/dentistas/nome/{nome}")
+	public List<Dentista> getDentistaLikeNome(@PathVariable String nome) {
+		
+		return dentistaRepository.findByLikeNome(nome);
+	}
+	
 	@GetMapping("/dentistas/{codigo}")
 	public ResponseEntity<?> getDentista(@PathVariable Long codigo) {
 		Optional dentistaConsultado = dentistaRepository.findById(codigo);

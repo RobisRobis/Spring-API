@@ -1,9 +1,13 @@
 package sp.senai.br.Odonto.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -24,6 +28,9 @@ public class Dentista {
 	private String cro;
 	private String telefone;
 	private String email;
+	
+	@ManyToMany
+	private List<Especialidade> especialidade;
 
 	public Long getCodigo() {
 		return codigo;
@@ -69,6 +76,14 @@ public class Dentista {
 	public String toString() {
 		return "Dentista [codigo=" + codigo + ", nome=" + nome + ", cro=" + cro + ", telefone=" + telefone + ", email="
 				+ email + "]";
+	}
+
+	public List<Especialidade> getEspecialidade() {
+		return especialidade;
+	}
+
+	public void setEspecialidade(List<Especialidade> especialidade) {
+		this.especialidade = especialidade;
 	}
 
 	
